@@ -15,7 +15,7 @@ export default {
     };
   },
   methods: {
-    postData() {
+    postFormData() {
       let data = [];
       for (let key in this.form) {
         data.push(`${key}=${this.form[key]}`);
@@ -24,7 +24,7 @@ export default {
 
       let xhr = new XMLHttpRequest();
 
-      xhr.open("POST", "http://localhost:8080");
+      xhr.open("POST", "http://localhost:8080/users");
       xhr.setRequestHeader(
           "Content-Type",
           "application/x-www-form-urlencoded"
@@ -33,7 +33,7 @@ export default {
         try {
           if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
-
+              console.log(JSON.parse(xhr.responseText));
             } else {
               alert("request occurred an error.");
             }
@@ -42,7 +42,7 @@ export default {
           alert(`Exception: ${e.description}`);
         }
       };
-      xhr.send(data.join("&"));
+      xhr.send(/*data.join("&")*/);
     }
   }
 };
@@ -53,33 +53,33 @@ export default {
   <div class="form">
     <label>
       <span>ID:</span>
-      <input type="number" v-model="form.user_id">
+      <input v-model="form.user_id" type="number">
     </label>
     <label>
       <span>Account:</span>
-      <input type="text" v-model="form.account">
+      <input v-model="form.account" type="text">
     </label>
     <label>
       <span>Username:</span>
-      <input type="text" v-model="form.username">
+      <input v-model="form.username" type="text">
     </label>
     <label>
       <span>Password:</span>
-      <input type="password" v-model="form.password">
+      <input v-model="form.password" type="password">
     </label>
     <label>
       <span>TEL:</span>
-      <input type="tel" v-model="form.tel">
+      <input v-model="form.tel" type="tel">
     </label>
     <label>
       <span>Status:</span>
-      <input type="text" v-model="form.status">
+      <input v-model="form.status" type="text">
     </label>
     <label>
       <span>Avatar:</span>
-      <input type="text" v-model="form.avatar">
+      <input v-model="form.avatar" type="text">
     </label>
-    <button @click="postData">ADD</button>
+    <button @click="">ADD</button>
   </div>
 </template>
 

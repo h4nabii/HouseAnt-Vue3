@@ -1,6 +1,3 @@
-@import "./base.css";
-@import "./test.css";
-
 #app {
     max-width: 1280px;
     margin: 0 auto;
