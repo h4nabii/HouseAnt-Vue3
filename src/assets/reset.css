@@ -104,9 +104,11 @@ html {
     visibility: hidden;
 }
 
+/* Non-Standard
 .clearfix {
     *zoom: 1;
 }
+*/
 
 /*隐藏*/
 .dn {

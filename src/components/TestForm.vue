@@ -24,25 +24,31 @@ export default {
 
       let xhr = new XMLHttpRequest();
 
-      xhr.open("POST", "http://localhost:8080/users");
+      xhr.open("POST", "http://localhost:8080/user/login");
+      // xhr.setRequestHeader(
+      //     "Content-Type",
+      //     "application/x-www-form-urlencoded"
+      // );
       xhr.setRequestHeader(
           "Content-Type",
-          "application/x-www-form-urlencoded"
+          "application/json;charset=UTF-8"
       );
       xhr.onreadystatechange = function () {
         try {
           if (xhr.readyState === XMLHttpRequest.DONE) {
+            console.log(xhr.responseText);
             if (xhr.status === 200) {
-              console.log(JSON.parse(xhr.responseText));
+              console.log("OK");
             } else {
               alert("request occurred an error.");
             }
           }
         } catch (e) {
+          console.log(123);
           alert(`Exception: ${e.description}`);
         }
       };
-      xhr.send(/*data.join("&")*/);
+      xhr.send(JSON.stringify(this.form));
     }
   }
 };
@@ -79,7 +85,7 @@ export default {
       <span>Avatar:</span>
       <input v-model="form.avatar" type="text">
     </label>
-    <button @click="">ADD</button>
+    <button @click="postFormData">ADD</button>
   </div>
 </template>
 
