@@ -9,7 +9,7 @@ export default {
   methods: {
     getUsers() {
       let usersXHR = new XMLHttpRequest();
-      usersXHR.open("GET", "http://localhost:8080/user/users");
+      usersXHR.open("GET", "http://111.231.2.157:8080/user/users");
       usersXHR.onreadystatechange = () => {
         try {
           if (usersXHR.readyState === XMLHttpRequest.DONE) {

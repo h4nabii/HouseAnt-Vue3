@@ -24,7 +24,7 @@ export default {
 
       let xhr = new XMLHttpRequest();
 
-      xhr.open("POST", "http://localhost:8080/user/login");
+      xhr.open("POST", "http://111.231.2.157:8080/user/login");
       // xhr.setRequestHeader(
       //     "Content-Type",
       //     "application/x-www-form-urlencoded"
