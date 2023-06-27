@@ -24,6 +24,10 @@ export default {
         }
       };
       usersXHR.send();
+    },
+    goLogin() {
+      console.log(window.location.href);
+      window.location.href = "login/"
     }
   },
   mounted() {
@@ -34,6 +38,7 @@ export default {
 </script>
 
 <template>
+  <button @click="goLogin">LOGIN</button>
   <button @click="getUsers">REFRESH</button>
   <table>
     <tr>

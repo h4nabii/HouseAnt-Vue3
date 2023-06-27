@@ -16,12 +16,6 @@ export default {
   },
   methods: {
     postFormData() {
-      let data = [];
-      for (let key in this.form) {
-        data.push(`${key}=${this.form[key]}`);
-      }
-      console.log(data.join("&"));
-
       let xhr = new XMLHttpRequest();
 
       xhr.open("POST", "http://111.231.2.157:8080/user/login");
@@ -37,6 +31,7 @@ export default {
         try {
           if (xhr.readyState === XMLHttpRequest.DONE) {
             console.log(xhr.responseText);
+            console.log(JSON.stringify(this.form));
             if (xhr.status === 200) {
               console.log("OK");
             } else {
@@ -44,7 +39,6 @@ export default {
             }
           }
         } catch (e) {
-          console.log(123);
           alert(`Exception: ${e.description}`);
         }
       };
@@ -85,7 +79,7 @@ export default {
       <span>Avatar:</span>
       <input v-model="form.avatar" type="text">
     </label>
-    <button @click="postFormData">ADD</button>
+    <button @click="">ADD</button>
   </div>
 </template>
 
