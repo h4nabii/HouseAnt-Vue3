@@ -1,47 +1,66 @@
-<script setup>
-import HelloWorld from "./components/HelloWorld.vue";
-import TheWelcome from "./components/TheWelcome.vue";
+<script>
+import UserPanel from "@/components/UserPanel.vue";
+import DataPanel from "@/components/DataPanel.vue";
+
+export default {
+  components: {
+    UserPanel,
+    DataPanel
+  },
+  data() {
+    return {};
+  }
+};
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" height="125" src="./assets/logo.svg" width="125"/>
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!"/>
+  <div class="container">
+    <header>HouseAnt</header>
+    <div class="content">
+      <UserPanel/>
+      <DataPanel/>
     </div>
-  </header>
+    <footer>
 
-  <main>
-    <TheWelcome/>
-  </main>
+    </footer>
+  </div>
 </template>
 
 <style scoped>
+.container {
+  width: 1000px;
+
+  margin: 0 auto;
+  padding: 20px 100px 200px;
+
+  border-radius: 50px;
+  border: 2px solid rgba(0, 0, 0, 50%);
+  box-shadow: 5px 5px 10px -5px;
+
+  background-color: white;
+}
+
 header {
-  line-height: 1.5;
+  --height: 100px;
+  height: var(--height);
+  line-height: var(--height);
+
+  font-size: 40px;
+  text-align: center;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.content {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+user-panel {
+  width: 500px;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+data-panel {
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
 }
 </style>

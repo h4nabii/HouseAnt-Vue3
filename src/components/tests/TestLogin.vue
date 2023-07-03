@@ -14,7 +14,7 @@ export default {
       let xhr = new XMLHttpRequest();
       let _this = this;
 
-      xhr.open("POST", "http://111.231.2.157:8080/user/login");
+      xhr.open("POST", "http://localhost:8080/user/login");
       xhr.setRequestHeader(
           "Content-Type",
           "application/json;charset=UTF-8"
@@ -60,7 +60,7 @@ export default {
 </script>
 
 <template>
-  <div class="form">
+  <div class="login-form">
     <label>
       <span>Account:</span>
       <input v-model="form.account" type="text" @change="clean_msg">
@@ -78,7 +78,7 @@ export default {
 </template>
 
 <style scoped>
-.form {
+.login-form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -94,26 +94,26 @@ export default {
   font-family: Consolas, serif;
 }
 
-.form label {
+.login-form label {
   display: flex;
   flex-direction: row;
   height: 28px;
   line-height: 28px;
 }
 
-.form label span {
+.login-form label span {
   display: inline-block;
   width: 90px;
 }
 
-.form label input {
+.login-form label input {
   flex-grow: 1;
   font-family: inherit;
   border: none;
   border-bottom: 1px solid black;
 }
 
-.form label input:focus {
+.login-form label input:focus {
   outline: none;
 }
 
@@ -123,11 +123,11 @@ export default {
   justify-content: space-between;
 }
 
-.form .msg {
+.login-form .msg {
   height: 20px;
 }
 
-.form button {
+.login-form button {
   width: 48%;
   height: 30px;
   font-family: inherit;
@@ -136,7 +136,7 @@ export default {
   border-radius: 20px;
 }
 
-.form button:hover {
+.login-form button:hover {
   background-color: #eee;
   transition: background-color 0.5s;
   cursor: pointer;

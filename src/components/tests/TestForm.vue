@@ -50,7 +50,7 @@ export default {
 </script>
 <template>
   <div>{{ form }}</div>
-  <div class="form">
+  <div class="login-form">
     <label>
       <span>ID:</span>
       <input v-model="form.user_id" type="number">
@@ -84,24 +84,24 @@ export default {
 </template>
 
 <style scoped>
-.form {
+.login-form {
   display: flex;
   flex-direction: column;
   max-width: 300px;
   margin: 30px;
 }
 
-.form label {
+.login-form label {
   margin-bottom: 10px;
   display: flex;
 }
 
-.form span {
+.login-form span {
   display: inline-block;
   width: 80px;
 }
 
-.form input {
+.login-form input {
   flex-grow: 1;
 }
 
