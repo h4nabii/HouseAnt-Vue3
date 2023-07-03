@@ -1,16 +1,24 @@
 <script>
+import DataList from "@/components/data-panel/DataList.vue";
+import "@/assets/panel.css"
+
 export default {
   data() {
     return {};
+  },
+  components: {
+    DataList
   }
 };
 </script>
 
 <template>
-  <div class="data-panel">
+  <div class="data-panel panel">
+    <div class="title">House</div>
     <div class="filter">
 
     </div>
+    <DataList/>
   </div>
 </template>
 
@@ -19,21 +27,13 @@ export default {
 .data-panel {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 
   width: 700px;
-  height: 100px;
+}
 
-  border: 1px solid black;
-  border-radius: 20px;
-  box-shadow: #aaa 8px 8px 10px -3px;
-
-  padding: 40px 20px;
-  box-sizing: border-box;
-
-  background-color: white;
-  color: black;
-  font-family: Consolas, serif;
+.data-panel .title {
+  height: 50px;
+  font-size: 24px;
 }
 
 .filter {

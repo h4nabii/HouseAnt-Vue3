@@ -1,0 +1,9 @@
+body {
+    min-height: 1000px;
+    background-size: 1000px 1000px;
+    background: linear-gradient(15deg, white 0, white 50%, gray 50%) fixed;
+}
+
+#app {
+    margin-top: 20px;
+}

@@ -1,15 +1,15 @@
 <script>
 export default {
   data() {
-    return {
-
-    };
+    return {};
   }
 };
 </script>
 
 <template>
+  <div class="panel">
 
+  </div>
 </template>
 
 <style scoped>

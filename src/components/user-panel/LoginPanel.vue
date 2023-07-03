@@ -1,4 +1,5 @@
 <script>
+import "@/assets/panel.css"
 export default {
   data() {
     return {
@@ -12,6 +13,7 @@ export default {
   methods: {
     login() {
       console.log("login");
+      this.$emit("loggedIn");
     },
     clean_input() {
       this.form.account = "";
@@ -20,13 +22,14 @@ export default {
     clean_msg() {
       this.msg = "";
     }
-  }
+  },
+  emits: ["loggedIn"]
 };
 </script>
 
 <template>
-  <div class="login-form">
-    <div class="title">Login</div>
+  <div class="login-panel panel">
+    <div class="title">Login / Register</div>
     <label>
       <span>Account:</span>
       <input v-model="form.account" type="text" @change="clean_msg">
@@ -37,54 +40,47 @@ export default {
     </label>
     <div class="msg" @click="msg = 'clicked'">{{ msg }}</div>
     <div class="button-bar">
-      <button @click="login">LOGIN</button>
-      <button @click="clean_input">REGISTER</button>
+      <button @click="login">Login</button>
+      <button @click="clean_input">Register</button>
     </div>
   </div>
 </template>
 
 <style scoped>
-.login-form {
+.login-panel {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  border: 1px solid black;
-  border-radius: 20px;
-  box-shadow: #aaa 8px 8px 10px -3px;
-
-  padding: 40px 20px;
-  box-sizing: border-box;
-
-  background-color: white;
-  color: black;
-  font-family: Consolas, serif;
 }
 
-.login-form .title {
-  height: 50px;
-  font-size: 24px;
-}
-
-.login-form label {
+.login-panel label {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
 }
 
-.login-form label > * {
+.login-panel label > * {
   height: 26px;
   line-height: 26px;
 }
 
-.login-form label span {
+.login-panel label span {
   display: inline-block;
   width: 90px;
 }
 
-.login-form label input {
+.login-panel label input {
   font-size: 16px;
   font-family: inherit;
+  padding: 0 10px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  box-shadow: gray 1px 1px;
+}
+
+.login-panel label input:focus {
+  outline: none;
+  box-shadow: inset gray 1px 1px;
 }
 
 .button-bar {
@@ -93,22 +89,28 @@ export default {
   justify-content: space-between;
 }
 
-.login-form .msg {
+.login-panel .msg {
   height: 20px;
 }
 
-.login-form button {
-  width: 48%;
+.login-panel button {
+  width: 45%;
   height: 30px;
   font-family: inherit;
   background-color: white;
-  border: 1px solid black;
+  border: 1px solid gray;
   border-radius: 20px;
+  box-shadow: gray 1px 1px;
 }
 
-.login-form button:hover {
+.login-panel button:hover {
   background-color: #eee;
-  transition: background-color 0.5s;
   cursor: pointer;
 }
+
+.login-panel button:active {
+  transform: translate(1px, 1px);
+  box-shadow: inset gray 1px 1px;
+}
+
 </style>

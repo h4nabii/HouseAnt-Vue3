@@ -1,0 +1,25 @@
+.panel {
+    box-shadow: gray 3px 3px;
+    border-radius: 20px;
+    border: 1px solid gray;
+
+    padding: 40px 20px;
+    box-sizing: border-box;
+
+    background-color: white;
+    color: black;
+    font-family: Consolas, serif;
+}
+
+.panel .title {
+    height: 50px;
+    line-height: 50px;
+    font-size: 24px;
+    color: black;
+}
+
+.inset {
+    border: 1px solid gray;
+    border-radius: 10px;
+    box-shadow: inset gray 1px 1px;
+}

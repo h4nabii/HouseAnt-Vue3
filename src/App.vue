@@ -20,9 +20,7 @@ export default {
       <UserPanel/>
       <DataPanel/>
     </div>
-    <footer>
-
-    </footer>
+    <footer>HouseAnt</footer>
   </div>
 </template>
 
@@ -34,8 +32,8 @@ export default {
   padding: 20px 100px 200px;
 
   border-radius: 50px;
-  border: 2px solid rgba(0, 0, 0, 50%);
-  box-shadow: 5px 5px 10px -5px;
+  border: 2px solid gray;
+  box-shadow: 0 10px 10px -10px;
 
   background-color: white;
 }
@@ -46,7 +44,22 @@ header {
   line-height: var(--height);
 
   font-size: 40px;
-  text-align: center;
+  font-family: Consolas, serif;
+  font-weight: bolder;
+  color: gray;
+  text-align: right;
+}
+
+footer {
+  --height: 100px;
+  height: var(--height);
+  line-height: var(--height);
+
+  font-size: 40px;
+  font-family: Consolas, serif;
+  font-weight: bolder;
+  color: gray;
+  text-align: right;
 }
 
 .content {
@@ -54,13 +67,5 @@ header {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-}
-
-user-panel {
-  width: 500px;
-}
-
-data-panel {
-
 }
 </style>
