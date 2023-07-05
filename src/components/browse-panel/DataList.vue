@@ -1,5 +1,5 @@
 <script>
-import DataItem from "@/components/data-panel/DataItem.vue";
+import DataItem from "@/components/browse-panel/DataItem.vue";
 
 export default {
   components: {DataItem},

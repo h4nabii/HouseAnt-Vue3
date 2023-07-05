@@ -1,6 +1,6 @@
 <script>
-import DataList from "@/components/data-panel/DataList.vue";
-import "@/assets/panel.css"
+import DataList from "@/components/browse-panel/DataList.vue";
+import "@/assets/panel.css";
 
 export default {
   data() {
@@ -13,8 +13,8 @@ export default {
 </script>
 
 <template>
-  <div class="data-panel panel">
-    <div class="title">House</div>
+  <div class="data-panel border-panel">
+    <div class="title">房源</div>
     <div class="filter">
 
     </div>
@@ -27,8 +27,6 @@ export default {
 .data-panel {
   display: flex;
   flex-direction: column;
-
-  width: 700px;
 }
 
 .data-panel .title {

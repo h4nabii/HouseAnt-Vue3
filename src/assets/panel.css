@@ -1,25 +1,58 @@
-.panel {
+.border-panel {
     box-shadow: gray 3px 3px;
     border-radius: 20px;
     border: 1px solid gray;
 
-    padding: 40px 20px;
+    padding: 20px;
     box-sizing: border-box;
 
     background-color: white;
     color: black;
-    font-family: Consolas, serif;
+    font-family: Consolas, "黑体", serif;
 }
 
-.panel .title {
-    height: 50px;
-    line-height: 50px;
-    font-size: 24px;
-    color: black;
+.border-panel .title {
+    font-size: 20px;
+    margin-bottom: 20px;
 }
 
-.inset {
+.panel-button {
     border: 1px solid gray;
-    border-radius: 10px;
+    box-shadow: gray 1px 1px;
+    box-sizing: border-box;
+    border-radius: 14px;
+    background-color: white;
+    height: 28px;
+}
+
+.panel-button:hover {
+    cursor: pointer;
+    background-color: #eee;
+    transition: background-color 0.2s;
+}
+
+.panel-button:active {
+    transform: translate(1px, 1px);
+    box-shadow: inset gray 1px 1px;
+}
+
+.panel-input {
+    border: 1px solid gray;
+    box-shadow: gray 1px 1px;
+    box-sizing: border-box;
+    border-radius: 14px;
+
+    height: 28px;
+    line-height: 28px;
+
+    font-size: 16px;
+    padding: 0 20px;
+
+    margin-right: 20px;
+}
+
+.panel-input:focus {
+    outline: none;
+    transform: translate(1px, 1px);
     box-shadow: inset gray 1px 1px;
 }

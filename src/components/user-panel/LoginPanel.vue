@@ -1,116 +1,143 @@
 <script>
-import "@/assets/panel.css"
+import "@/assets/panel.css";
+import config from "@/assets/houseantConfig.js";
+import axios from "axios";
+
 export default {
+  emits: ["login"],
   data() {
     return {
       form: {
         account: "",
         password: ""
       },
+      keep: false,
       msg: ""
     };
   },
   methods: {
-    login() {
-      console.log("login");
-      this.$emit("loggedIn");
+    passLogin(user, pass) {
+      let data;
+      if (user && pass) {
+        data = {
+          account: user,
+          password: pass
+        };
+        this.keep = true;
+      } else {
+        data = JSON.stringify(this.form);
+      }
+
+      axios(config.axiosConfig(
+          "post",
+          config.localURL + "/user/login",
+          data,
+          this.keep
+      ))
+          .then(resp => {
+            let data = resp.data;
+            console.log(data);
+            if (data.login) {
+              this.$emit("login");
+            } else {
+              this.msg = data.message;
+            }
+          })
+          .catch(e => alert(`Exception: ${e}`));
     },
+
+    // autoLogin() {
+    //   axios({
+    //     method: "get",
+    //     url: "http://localhost:8080/user/autologin",
+    //     headers: {
+    //       "Content-Type": "application/json;charset=UTF-8"
+    //     },
+    //     withCredentials: true
+    //   })
+    //       .then(resp => {
+    //         let data = resp.data;
+    //         console.log(data);
+    //       })
+    //       .catch(e => alert(`Exception: ${e}`));
+    // },
+
+    register() {
+      if (this.form.account === "" || this.form.password === "") {
+        this.msg = "Empty";
+      } else {
+        axios({
+          method: "post",
+          url: "http://localhost:8080/user/register",
+          headers: {
+            "Content-Type": "application/json;charset=UTF-8"
+          },
+          withCredentials: true,
+          data: JSON.stringify(this.form)
+        })
+            .then(resp => {
+              let data = resp.data;
+              console.log(data);
+              this.msg = data.message;
+              if (data.success) {
+                this.passLogin(this.form.account, this.form.password);
+              }
+            })
+            .catch(e => alert(`Exception: ${e}`));
+      }
+    },
+
     clean_input() {
       this.form.account = "";
       this.form.password = "";
     },
+
     clean_msg() {
       this.msg = "";
     }
   },
-  emits: ["loggedIn"]
+  mounted() {
+    // this.autoLogin();
+  }
 };
 </script>
 
 <template>
-  <div class="login-panel panel">
-    <div class="title">Login / Register</div>
-    <label>
-      <span>Account:</span>
-      <input v-model="form.account" type="text" @change="clean_msg">
-    </label>
-    <label>
-      <span>Password:</span>
-      <input v-model="form.password" type="password" @change="clean_msg">
-    </label>
-    <div class="msg" @click="msg = 'clicked'">{{ msg }}</div>
-    <div class="button-bar">
-      <button @click="login">Login</button>
-      <button @click="clean_input">Register</button>
-    </div>
+  <div class="login-panel border-panel">
+    <div class="title">登录 / 注册 <i>新账号将会自动注册</i></div>
+    <form>
+      <label>
+        <span>账号：</span>
+        <input class="panel-input" v-model="form.account" type="text" @input="clean_msg">
+      </label>
+      <label>
+        <span>密码：</span>
+        <input class="panel-input" v-model="form.password" type="password" @input="clean_msg">
+      </label>
+      <button class="panel-button" @click.prevent="passLogin" type="submit">登录</button>
+    </form>
   </div>
 </template>
 
 <style scoped>
-.login-panel {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+i {
+  font-size: 14px;
+  font-style: italic;
+  color: gray;
 }
 
-.login-panel label {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
-
-.login-panel label > * {
-  height: 26px;
-  line-height: 26px;
-}
-
-.login-panel label span {
-  display: inline-block;
-  width: 90px;
-}
-
-.login-panel label input {
-  font-size: 16px;
-  font-family: inherit;
-  padding: 0 10px;
-  border: 1px solid gray;
-  border-radius: 10px;
-  box-shadow: gray 1px 1px;
-}
-
-.login-panel label input:focus {
-  outline: none;
-  box-shadow: inset gray 1px 1px;
-}
-
-.button-bar {
+form {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.login-panel .msg {
-  height: 20px;
+input {
+  width: 300px;
 }
 
-.login-panel button {
-  width: 45%;
-  height: 30px;
-  font-family: inherit;
-  background-color: white;
-  border: 1px solid gray;
-  border-radius: 20px;
-  box-shadow: gray 1px 1px;
-}
-
-.login-panel button:hover {
-  background-color: #eee;
-  cursor: pointer;
-}
-
-.login-panel button:active {
-  transform: translate(1px, 1px);
-  box-shadow: inset gray 1px 1px;
+button {
+  width: 200px;
 }
 
 </style>

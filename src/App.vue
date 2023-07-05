@@ -1,11 +1,11 @@
 <script>
 import UserPanel from "@/components/UserPanel.vue";
-import DataPanel from "@/components/DataPanel.vue";
+import BrowsePanel from "@/components/BrowsePanel.vue";
 
 export default {
   components: {
     UserPanel,
-    DataPanel
+    BrowsePanel
   },
   data() {
     return {};
@@ -18,7 +18,7 @@ export default {
     <header>HouseAnt</header>
     <div class="content">
       <UserPanel/>
-      <DataPanel/>
+      <BrowsePanel/>
     </div>
     <footer>HouseAnt</footer>
   </div>
@@ -29,7 +29,7 @@ export default {
   width: 1000px;
 
   margin: 0 auto;
-  padding: 20px 100px 200px;
+  padding: 20px 100px 20px;
 
   border-radius: 50px;
   border: 2px solid gray;
@@ -65,7 +65,10 @@ footer {
 .content {
   justify-content: space-between;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.content > * {
+  margin-bottom: 30px;
 }
 </style>
