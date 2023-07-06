@@ -1,13 +1,25 @@
 <script>
 import DataList from "@/components/browse-panel/DataList.vue";
+import FilterPanel from "@/components/browse-panel/FilterPanel.vue";
+import houseAnt from "@/assets/houseAnt";
 import "@/assets/panel.css";
 
 export default {
   data() {
-    return {};
+    return {
+      houses: []
+    };
   },
   components: {
-    DataList
+    DataList,
+    FilterPanel
+  },
+  created() {
+    houseAnt.user.getBrowseData().then(
+        result => {
+          this.houses = result.houses;
+        }
+    );
   }
 };
 </script>
@@ -15,10 +27,8 @@ export default {
 <template>
   <div class="data-panel border-panel">
     <div class="title">房源</div>
-    <div class="filter">
-
-    </div>
-    <DataList/>
+    <!--    <FilterPanel/>-->
+    <DataList :houses="houses"/>
   </div>
 </template>
 
@@ -32,9 +42,5 @@ export default {
 .data-panel .title {
   height: 50px;
   font-size: 24px;
-}
-
-.filter {
-  background-color: lightyellow;
 }
 </style>

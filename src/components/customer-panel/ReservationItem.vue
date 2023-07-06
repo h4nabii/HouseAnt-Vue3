@@ -1,15 +1,13 @@
 <script>
-import "@/assets/panel.css";
-
 export default {
-  props: ["house"]
+  props: ["reservation"]
 };
 </script>
 
 <template>
   <div class="border-panel">
     <ul>
-      <li v-for="value in house">{{ value }}</li>
+      <li v-for="value in reservation">{{ value }}</li>
     </ul>
   </div>
 </template>

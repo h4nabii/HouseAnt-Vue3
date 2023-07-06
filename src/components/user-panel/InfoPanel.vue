@@ -106,7 +106,7 @@ export default {
     </div>
   </div>
 
-  <component :is="subPanel" :username="username" @update="getInfo" :tel="tel"/>
+  <component :is="subPanel" :username="username" @update="getInfo" @changePass="this.$emit('logout')" :tel="tel"/>
 </template>
 
 <style scoped>

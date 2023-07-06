@@ -47,22 +47,6 @@ export default {
       );
     },
 
-    // autoLogin() {
-    //   axios({
-    //     method: "get",
-    //     url: "http://localhost:8080/user/autologin",
-    //     headers: {
-    //       "Content-Type": "application/json;charset=UTF-8"
-    //     },
-    //     withCredentials: true
-    //   })
-    //       .then(resp => {
-    //         let data = resp.data;
-    //         console.log(data);
-    //       })
-    //       .catch(e => alert(`Exception: ${e}`));
-    // },
-
     register(user, pass) {
       houseAnt.user.register(user, pass).then(
           result => {

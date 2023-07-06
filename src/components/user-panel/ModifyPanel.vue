@@ -35,13 +35,13 @@ export default {
       let result = validateUpdate(data.username, data.password, data.confirm, data.tel);
 
       if (result.success) {
-        if (result.changePass) {
-          this.$emit("changePass");
-        }
-
-        houseAnt.user.updateInfo(data.username, data.password, data.tel).then(({success, message}) => {
+        houseAnt.user.updateInfo(data.username, data.password, data.tel).then(({success, keep, message}) => {
           if (success) {
-            this.$emit("update");
+            if (!keep) {
+              this.$emit("changePass");
+            } else {
+              this.$emit("update");
+            }
             console.log(">> " + message);
 
           } else {

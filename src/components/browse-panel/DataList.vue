@@ -2,48 +2,15 @@
 import DataItem from "@/components/browse-panel/DataItem.vue";
 
 export default {
-  components: {DataItem},
-  data() {
-    return {
-      houseList: []
-    };
-  },
-  created() {
-    this.houseList = [
-      {
-        name: "name1",
-        address: "add",
-        direction: undefined,
-        area: "area?",
-        layout: "l1",
-        price: 123,
-        picture: undefined,
-        developer: "dev1",
-        floor: "B1",
-        hasElevator: false,
-        buildTime: new Date()
-      }, {
-        name: "name2",
-        address: "ad?",
-        direction: "east",
-        area: "area?-",
-        layout: "l2",
-        price: 12300,
-        picture: undefined,
-        developer: "dev67",
-        floor: "F2",
-        hasElevator: true,
-        buildTime: new Date()
-      }
-    ];
-  }
+  props: ["houses"],
+  components: {DataItem}
 };
 </script>
 
 <template>
   <div class="data-list">
     <ul>
-      <DataItem v-for="house in houseList" :house-info="house"/>
+      <DataItem v-for="house in houses" :house-info="house"/>
     </ul>
   </div>
 </template>

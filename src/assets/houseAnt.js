@@ -136,9 +136,12 @@ export default {
                 .isDev()
                 .send();
 
-            if (resp.data.message === "Successfully update userInfo") {
+            console.log(resp.data);
+
+            if (resp.data.message === "Successfully update userIfo") {
                 return {
                     success: true,
+                    keep: resp.keep,
                     message: resp.data.message
                 };
             } else {
@@ -147,8 +150,58 @@ export default {
                     message: resp.data.message
                 };
             }
+        },
+
+        async getBrowseData() {
+            let resp = await newAxios()
+                .setEntry("/user/findAllHouseInfo")
+                .isDev()
+                .send();
+
+            return {
+                houses: resp.data.result
+            };
         }
     },
-    customer: {},
-    houseOwner: {}
+    customer: {
+        async createReservation() {
+
+        },
+
+        async getMyReservations() {
+            let resp = await newAxios()
+                .setEntry("/user/myReservationInfo")
+                .isDev()
+                .withCredentials()
+                .send();
+
+            return {
+                reservations: resp.data.result
+            };
+        }
+    },
+    houseOwner: {
+        async createHouse(house) {
+            let resp = await newAxios()
+                .setEntry("/house/addHouseInfo")
+                .isPost()
+                .withCredentials()
+                .setData(house)
+                .send();
+
+            console.log(resp.data);
+        },
+
+        async getMyHouses() {
+            let resp = await newAxios()
+                .setEntry("/user/myHouseInfo")
+                .withCredentials()
+                .isDev()
+                .send();
+
+            return {
+                houses: resp.data.result
+            };
+        }
+    }
 };
