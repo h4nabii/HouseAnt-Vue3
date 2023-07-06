@@ -10,8 +10,17 @@ function generateAxiosConfig(method, url, data, withCredentials) {
     };
 }
 
+let dev = true;
+
+let entries = {
+    login: "/user/login",
+    logout: "/user/logout",
+
+};
+
 export default {
+    dev: false,
     houseantURL: "http://111.231.2.157:8080",
     localURL: "http://localhost:8080",
-    axiosConfig: generateAxiosConfig
+    axiosConfig: generateAxiosConfig,
 };

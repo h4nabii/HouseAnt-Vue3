@@ -1,7 +1,7 @@
 <script>
 import "@/assets/panel.css";
-import config from "@/assets/houseantConfig.js";
-import axios from "axios";
+import houseAnt from "@/assets/houseAnt";
+import validateLogin from "@/assets/validators/userPassValidator";
 
 export default {
   emits: ["login"],
@@ -10,40 +10,41 @@ export default {
       form: {
         account: "",
         password: ""
-      },
-      keep: false,
-      msg: ""
+      }
     };
   },
+  created() {
+    houseAnt.user.autoLogin().then(({success}) => {
+      if (success) this.$emit("login");
+    });
+  },
   methods: {
-    passLogin(user, pass) {
-      let data;
-      if (user && pass) {
-        data = {
-          account: user,
-          password: pass
-        };
-        this.keep = true;
-      } else {
-        data = JSON.stringify(this.form);
+    login() {
+      if (!validateLogin(this.form.account, this.form.password)) {
+        console.log(">> invalid parameter");
+        return;
       }
 
-      axios(config.axiosConfig(
-          "post",
-          config.localURL + "/user/login",
-          data,
-          this.keep
-      ))
-          .then(resp => {
-            let data = resp.data;
-            console.log(data);
-            if (data.login) {
+      houseAnt.user.login(this.form.account, this.form.password).then(
+          result => {
+            console.log(result);
+
+            if (result.success) {
+              console.log(">> login successfully");
               this.$emit("login");
+
+            } else if (result.newUser) {
+              console.log(">> failed: account not found, now trying to register a new account");
+              this.register(this.form.account, this.form.password);
+
+            } else if (result.error) {
+              console.log(">> error: " + result.message);
+
             } else {
-              this.msg = data.message;
+              console.log(">> error: unknown reason");
             }
-          })
-          .catch(e => alert(`Exception: ${e}`));
+          }
+      );
     },
 
     // autoLogin() {
@@ -62,29 +63,16 @@ export default {
     //       .catch(e => alert(`Exception: ${e}`));
     // },
 
-    register() {
-      if (this.form.account === "" || this.form.password === "") {
-        this.msg = "Empty";
-      } else {
-        axios({
-          method: "post",
-          url: "http://localhost:8080/user/register",
-          headers: {
-            "Content-Type": "application/json;charset=UTF-8"
-          },
-          withCredentials: true,
-          data: JSON.stringify(this.form)
-        })
-            .then(resp => {
-              let data = resp.data;
-              console.log(data);
-              this.msg = data.message;
-              if (data.success) {
-                this.passLogin(this.form.account, this.form.password);
-              }
-            })
-            .catch(e => alert(`Exception: ${e}`));
-      }
+    register(user, pass) {
+      houseAnt.user.register(user, pass).then(
+          result => {
+            this.msg = result.message;
+            if (result.success) {
+              console.log(">> Register successfully, now trying to login");
+              this.login(this.form.account, this.form.password);
+            }
+          }
+      );
     },
 
     clean_input() {
@@ -95,9 +83,6 @@ export default {
     clean_msg() {
       this.msg = "";
     }
-  },
-  mounted() {
-    // this.autoLogin();
   }
 };
 </script>
@@ -114,12 +99,16 @@ export default {
         <span>密码：</span>
         <input class="panel-input" v-model="form.password" type="password" @input="clean_msg">
       </label>
-      <button class="panel-button" @click.prevent="passLogin" type="submit">登录</button>
+      <button class="panel-button" @click.prevent="login" type="submit">登录</button>
     </form>
   </div>
 </template>
 
 <style scoped>
+.login-panel {
+  height: 120px;
+}
+
 i {
   font-size: 14px;
   font-style: italic;

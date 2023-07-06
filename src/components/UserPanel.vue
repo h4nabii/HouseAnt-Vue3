@@ -1,9 +1,6 @@
 <script>
 import LoginPanel from "@/components/user-panel/LoginPanel.vue";
 import InfoPanel from "@/components/user-panel/InfoPanel.vue";
-import ModifyPanel from "@/components/user-panel/ModifyPanel.vue";
-import OwnerPanel from "@/components/user-panel/OwnerPanel.vue";
-import CustomerPanel from "@/components/user-panel/CustomerPanel.vue";
 
 export default {
   data() {
@@ -20,9 +17,6 @@ export default {
   components: {
     LoginPanel,
     InfoPanel,
-    ModifyPanel,
-    OwnerPanel,
-    CustomerPanel
   }
 };
 </script>
@@ -30,10 +24,7 @@ export default {
 <template>
   <div class="user-panel">
     <LoginPanel v-if="!login" @login="login=true"/>
-    <InfoPanel/>
-    <ModifyPanel/>
-    <OwnerPanel/>
-    <CustomerPanel/>
+    <InfoPanel v-if="login" @logout="login=false"/>
   </div>
 </template>
 

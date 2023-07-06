@@ -36,6 +36,11 @@
     box-shadow: inset gray 1px 1px;
 }
 
+.panel-button.active {
+    transform: translate(1px, 1px);
+    box-shadow: inset gray 1px 1px;
+}
+
 .panel-input {
     border: 1px solid gray;
     box-shadow: gray 1px 1px;

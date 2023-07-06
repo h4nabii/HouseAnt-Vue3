@@ -20,8 +20,8 @@ export default {
         picture: undefined,
         developer: "dev1",
         floor: "B1",
-        has_elevator: false,
-        build_time: new Date()
+        hasElevator: false,
+        buildTime: new Date()
       }, {
         name: "name2",
         address: "ad?",
@@ -32,8 +32,8 @@ export default {
         picture: undefined,
         developer: "dev67",
         floor: "F2",
-        has_elevator: true,
-        build_time: new Date()
+        hasElevator: true,
+        buildTime: new Date()
       }
     ];
   }
