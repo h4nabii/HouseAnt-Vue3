@@ -7,6 +7,7 @@ export default function newAxios() {
         ifDev: false,
         entry: "/",
         data: null,
+        params: {},
 
         isPost() {
             this.method = "post";
@@ -14,6 +15,14 @@ export default function newAxios() {
         },
         isGet() {
             this.method = "get";
+            return this;
+        },
+        isDelete() {
+            this.method = "delete";
+            return this;
+        },
+        isUpdate() {
+            this.method = "update";
             return this;
         },
         isDev() {
@@ -32,13 +41,27 @@ export default function newAxios() {
             this.data = data;
             return this;
         },
+        setParams(params) {
+            this.params = params;
+            return this;
+        },
         send() {
+            let url = (this.ifDev ? "http://localhost:8080" : "http://111.231.2.157:8080") + this.entry;
+
+            if (Object.entries(this.params).length) {
+                url += "?" + [...Object.entries(this.params)]
+                    .map(([key, value]) => {
+                        return `${key}=${value}`;
+                    })
+                    .join("&");
+            }
+
             return axios({
                 headers: {
                     "Content-Type": "application/json;charset=UTF-8"
                 },
                 method: this.method,
-                url: (this.ifDev ? "http://localhost:8080" : "http://111.231.2.157:8080") + this.entry,
+                url: url,
                 withCredentials: this.credentials,
                 data: this.data
             });

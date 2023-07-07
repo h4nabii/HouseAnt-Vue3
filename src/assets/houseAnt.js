@@ -5,12 +5,10 @@ export default {
     user: {
         async autoLogin() {
             let resp = await newAxios()
-                .isDev()
                 .setEntry("/")
                 .withCredentials()
                 .send();
 
-            console.log(resp.data);
             return {
                 success: resp.data["auto-login"],
                 account: resp.data.account
@@ -19,7 +17,6 @@ export default {
 
         async login(account, password) {
             let resp = await newAxios()
-                .isDev()
                 .isPost()
                 .withCredentials()
                 .setData({
@@ -29,7 +26,6 @@ export default {
                 .setEntry("/user/login")
                 .send();
 
-            console.log(resp.data);
             if (resp.data.login) {
                 return {
                     success: true,
@@ -58,7 +54,6 @@ export default {
             }
 
             let resp = await newAxios()
-                .isDev()
                 .setEntry("/user/register")
                 .setData({
                     account: account,
@@ -68,7 +63,6 @@ export default {
                 .withCredentials()
                 .send();
 
-            console.log(resp.data);
             if (resp.data.success) {
                 return {
                     success: true,
@@ -86,7 +80,6 @@ export default {
 
         async logout() {
             let resp = await newAxios()
-                .isDev()
                 .setEntry("/user/logout")
                 .withCredentials()
                 .send();
@@ -104,7 +97,6 @@ export default {
                 .setEntry("/user/userInfo")
                 .isPost()
                 .withCredentials()
-                .isDev()
                 .send();
 
             if (resp.data.result) {
@@ -133,10 +125,7 @@ export default {
                 })
                 .isPost()
                 .withCredentials()
-                .isDev()
                 .send();
-
-            console.log(resp.data);
 
             if (resp.data.message === "Successfully update userIfo") {
                 return {
@@ -155,7 +144,6 @@ export default {
         async getBrowseData() {
             let resp = await newAxios()
                 .setEntry("/user/findAllHouseInfo")
-                .isDev()
                 .send();
 
             return {
@@ -164,14 +152,52 @@ export default {
         }
     },
     customer: {
-        async createReservation() {
+        async createReservation(reservation) {
+            console.log(reservation);
 
+            let resp = await newAxios()
+                .setEntry("/customer/addReservation")
+                .isPost()
+                .withCredentials()
+                .setData(reservation)
+                .send();
+
+            return {
+                message: resp.data
+            };
+        },
+
+        async updateReservation(reservation) {
+            let resp = await newAxios()
+                .setEntry("/customer/updateReservationInfo")
+                .isPost()
+                .withCredentials()
+                .setData(reservation)
+                .send();
+
+            return {
+                message: resp.data
+            };
+        },
+
+        async deleteReservation(id) {
+            let resp = await newAxios()
+                .setEntry("/customer/deleteReservation")
+                .isDelete()
+                .withCredentials()
+                .setParams({
+                    id: id
+                })
+                .send();
+
+            return {
+                message: resp.data
+            };
         },
 
         async getMyReservations() {
             let resp = await newAxios()
                 .setEntry("/user/myReservationInfo")
-                .isDev()
                 .withCredentials()
                 .send();
 
@@ -189,14 +215,43 @@ export default {
                 .setData(house)
                 .send();
 
-            console.log(resp.data);
+            return {
+                message: resp.data
+            };
+        },
+
+        async updateHouse(house) {
+            let resp = await newAxios()
+                .setEntry("/house/updateHouseInfo")
+                .isPost()
+                .withCredentials()
+                .setData(house)
+                .send();
+
+            return {
+                message: resp.data
+            };
+        },
+
+        async deleteHouse(id) {
+            let resp = await newAxios()
+                .setEntry("/house/deleteHouseInfo")
+                .isDelete()
+                .withCredentials()
+                .setParams({
+                    id: id
+                })
+                .send();
+
+            return {
+                message: resp.data
+            };
         },
 
         async getMyHouses() {
             let resp = await newAxios()
                 .setEntry("/user/myHouseInfo")
                 .withCredentials()
-                .isDev()
                 .send();
 
             return {

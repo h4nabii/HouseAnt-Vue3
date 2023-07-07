@@ -2,6 +2,7 @@
 import "@/assets/panel.css";
 import houseAnt from "@/assets/houseAnt";
 import validateLogin from "@/assets/validators/userPassValidator";
+import newAxios from "@/assets/axois/axoisGen";
 
 export default {
   emits: ["login"],
@@ -27,8 +28,6 @@ export default {
 
       houseAnt.user.login(this.form.account, this.form.password).then(
           result => {
-            console.log(result);
-
             if (result.success) {
               console.log(">> login successfully");
               this.$emit("login");

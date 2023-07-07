@@ -1,0 +1,37 @@
+.database-panel {
+    max-width: 500px;
+}
+
+.input-line label {
+    display: inline-block;
+    width: 120px;
+}
+
+.input-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.panel-input {
+    width: 200px;
+    font-family: inherit;
+}
+
+.panel-input.selector {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.button-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.panel-button {
+    width: 160px;
+    font-family: inherit;
+    font-size: 16px;
+}
