@@ -55,9 +55,9 @@ export default {
 
 <style scoped>
 .data-item {
-  border: 1px solid gray;
+  border: 1px solid grey;
   border-radius: 10px;
-  box-shadow: inset gray 1px 1px;
+  box-shadow: inset grey 1px 1px;
 
   margin-bottom: 20px;
   padding: 20px;

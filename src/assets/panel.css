@@ -1,7 +1,7 @@
 .border-panel {
-    box-shadow: gray 3px 3px;
+    box-shadow: grey 3px 3px;
     border-radius: 20px;
-    border: 1px solid gray;
+    border: 1px solid grey;
 
     padding: 20px;
     box-sizing: border-box;
@@ -17,8 +17,8 @@
 }
 
 .panel-button {
-    border: 1px solid gray;
-    box-shadow: gray 1px 1px;
+    border: 1px solid grey;
+    box-shadow: grey 1px 1px;
     box-sizing: border-box;
     border-radius: 14px;
     background-color: white;
@@ -33,17 +33,17 @@
 
 .panel-button:active {
     transform: translate(1px, 1px);
-    box-shadow: inset gray 1px 1px;
+    box-shadow: inset grey 1px 1px;
 }
 
 .panel-button.active {
     transform: translate(1px, 1px);
-    box-shadow: inset gray 1px 1px;
+    box-shadow: inset grey 1px 1px;
 }
 
 .panel-input {
-    border: 1px solid gray;
-    box-shadow: gray 1px 1px;
+    border: 1px solid grey;
+    box-shadow: grey 1px 1px;
     box-sizing: border-box;
     border-radius: 14px;
 
@@ -57,5 +57,5 @@
 .panel-input:focus {
     outline: none;
     transform: translate(1px, 1px);
-    box-shadow: inset gray 1px 1px;
+    box-shadow: inset grey 1px 1px;
 }

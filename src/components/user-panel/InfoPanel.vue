@@ -125,7 +125,7 @@ export default {
   height: 80px;
   width: 80px;
   border-radius: 50%;
-  border: 2px solid gray;
+  border: 2px solid grey;
   margin-right: 20px;
 }
 

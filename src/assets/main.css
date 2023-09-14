@@ -1,7 +1,7 @@
 body {
     min-height: 1000px;
     background-size: 1000px 1000px;
-    background: linear-gradient(15deg, white 0, white 50%, gray 50%) fixed;
+    background: linear-gradient(15deg, white 0, white 50%, grey 50%) fixed;
 }
 
 #app {
@@ -15,7 +15,7 @@ body {
     padding: 20px 100px 20px;
 
     border-radius: 50px;
-    border: 2px solid gray;
+    border: 2px solid grey;
     box-shadow: 0 10px 10px -10px;
 
     background-color: white;
@@ -29,7 +29,7 @@ header {
     font-size: 40px;
     font-family: Consolas, serif;
     font-weight: bolder;
-    color: gray;
+    color: grey;
     text-align: right;
 }
 
@@ -41,7 +41,7 @@ footer {
     font-size: 40px;
     font-family: Consolas, serif;
     font-weight: bolder;
-    color: gray;
+    color: grey;
     text-align: right;
 }
 

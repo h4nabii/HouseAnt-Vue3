@@ -145,7 +145,7 @@ form {
 .avatar-input {
   width: 120px;
   display: block;
-  border: 1px solid gray;
+  border: 1px solid grey;
 }
 
 .avatar-input .avatar {

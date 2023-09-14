@@ -95,7 +95,7 @@ export default {
 i {
   font-size: 14px;
   font-style: italic;
-  color: gray;
+  color: grey;
 }
 
 form {
