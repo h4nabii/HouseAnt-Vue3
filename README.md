@@ -1,31 +1,8 @@
-# Front-end
+# HouseAnt房屋租赁网站
 
-This template should help get you started developing with Vue 3 in Vite.
+这是一个使用 Vue + Vite 进行开发的简易房屋租赁网站。
+实现了基本的租房、出租的基本功能；实现了登录、注册的用户操作。
 
-## Recommended IDE Setup
+### 自定义配置
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and
-disable
-Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+详见 [Vite Configuration Reference](https://vitejs.dev/config/).

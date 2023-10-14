@@ -4,7 +4,8 @@ export default function newAxios() {
     return {
         method: "get",
         credentials: false,
-        ifDev: false,
+        // ifDev: false,
+        ifDev: true, // remote unavailable
         entry: "/",
         data: null,
         params: {},
@@ -25,10 +26,11 @@ export default function newAxios() {
             this.method = "update";
             return this;
         },
-        isDev() {
-            this.ifDev = true;
-            return this;
-        },
+        /* remote server unavailable */
+        // isDev() {
+        //     this.ifDev = true;
+        //     return this;
+        // },
         withCredentials() {
             this.credentials = true;
             return this;
@@ -46,7 +48,7 @@ export default function newAxios() {
             return this;
         },
         send() {
-            let url = (this.ifDev ? "http://localhost:8080" : "http://111.231.2.157:8080") + this.entry;
+            let url = (this.ifDev ? "https://h4nabii.hyhyzz.top/house-ant" : "http://111.231.2.157:8080") + this.entry;
 
             if (Object.entries(this.params).length) {
                 url += "?" + [...Object.entries(this.params)]

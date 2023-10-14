@@ -3,35 +3,25 @@ import newAxios from "@/assets/axois/axoisGen";
 
 export default {
     user: {
-        async autoLogin() {
-            let resp = await newAxios()
-                .setEntry("/")
-                .withCredentials()
-                .send();
-
-            return {
-                success: resp.data["auto-login"],
-                account: resp.data.account
-            };
-        },
-
         async login(account, password) {
             let resp = await newAxios()
                 .isPost()
                 .withCredentials()
                 .setData({
-                    account: account,
+                    username: account,
                     password: password
                 })
                 .setEntry("/user/login")
                 .send();
 
-            if (resp.data.login) {
+            console.log(resp.data);
+
+            if (resp.data["success"]) {
                 return {
                     success: true,
                     account: account
                 };
-            } else if (resp.data.message === "User not found") {
+            } else if (resp.data.error === "User does not exist") {
                 return {
                     success: false,
                     newUser: true
@@ -56,12 +46,14 @@ export default {
             let resp = await newAxios()
                 .setEntry("/user/register")
                 .setData({
-                    account: account,
+                    username: account,
                     password: password
                 })
                 .isPost()
                 .withCredentials()
                 .send();
+
+            console.log(resp.data);
 
             if (resp.data.success) {
                 return {
@@ -84,7 +76,7 @@ export default {
                 .withCredentials()
                 .send();
 
-            if (resp.data.logout) {
+            if (resp.data.success) {
                 return {
                     success: true,
                     message: resp.data.message
@@ -94,16 +86,16 @@ export default {
 
         async getInfo() {
             let resp = await newAxios()
-                .setEntry("/user/userInfo")
-                .isPost()
+                .setEntry("/user/get-info")
+                .isGet()
                 .withCredentials()
                 .send();
 
-            if (resp.data.result) {
+            if (resp.data) {
                 return {
                     user: {
-                        username: resp.data.result.username,
-                        tel: resp.data.result.tel
+                        username: resp.data.username,
+                        tel: resp.data.access
                     }
                 };
             } else {
@@ -117,7 +109,7 @@ export default {
 
         async updateInfo(username, password, tel) {
             let resp = await newAxios()
-                .setEntry("/user/updateUser")
+                .setEntry("/user/update-info")
                 .setData({
                     username: username,
                     password: password !== "" ? password : null,
@@ -143,11 +135,11 @@ export default {
 
         async getBrowseData() {
             let resp = await newAxios()
-                .setEntry("/user/findAllHouseInfo")
+                .setEntry("/user/get-explore-list?count=20&page=1")
                 .send();
 
             return {
-                houses: resp.data.result
+                houses: resp.data["houseList"]
             };
         }
     },
@@ -156,7 +148,7 @@ export default {
             console.log(reservation);
 
             let resp = await newAxios()
-                .setEntry("/customer/addReservation")
+                .setEntry("/customer/create-reservation")
                 .isPost()
                 .withCredentials()
                 .setData(reservation)
@@ -169,7 +161,7 @@ export default {
 
         async updateReservation(reservation) {
             let resp = await newAxios()
-                .setEntry("/customer/updateReservationInfo")
+                .setEntry("/customer/modify-reservation")
                 .isPost()
                 .withCredentials()
                 .setData(reservation)
@@ -182,7 +174,7 @@ export default {
 
         async deleteReservation(id) {
             let resp = await newAxios()
-                .setEntry("/customer/deleteReservation")
+                .setEntry("/customer/cancel-reservation")
                 .isDelete()
                 .withCredentials()
                 .setParams({
@@ -197,19 +189,19 @@ export default {
 
         async getMyReservations() {
             let resp = await newAxios()
-                .setEntry("/user/myReservationInfo")
+                .setEntry("/customer/get-reservation-list")
                 .withCredentials()
                 .send();
 
             return {
-                reservations: resp.data.result
+                reservations: resp.data["reservationList"]
             };
         }
     },
     houseOwner: {
         async createHouse(house) {
             let resp = await newAxios()
-                .setEntry("/house/addHouseInfo")
+                .setEntry("/owner/add-house")
                 .isPost()
                 .withCredentials()
                 .setData(house)
@@ -222,7 +214,7 @@ export default {
 
         async updateHouse(house) {
             let resp = await newAxios()
-                .setEntry("/house/updateHouseInfo")
+                .setEntry("/owner/update-house")
                 .isPost()
                 .withCredentials()
                 .setData(house)
@@ -235,7 +227,7 @@ export default {
 
         async deleteHouse(id) {
             let resp = await newAxios()
-                .setEntry("/house/deleteHouseInfo")
+                .setEntry("/owner/remove-house")
                 .isDelete()
                 .withCredentials()
                 .setParams({
@@ -250,7 +242,7 @@ export default {
 
         async getMyHouses() {
             let resp = await newAxios()
-                .setEntry("/user/myHouseInfo")
+                .setEntry("/owner/get-house-list")
                 .withCredentials()
                 .send();
 

@@ -14,11 +14,11 @@ export default {
       }
     };
   },
-  created() {
-    houseAnt.user.autoLogin().then(({success}) => {
-      if (success) this.$emit("login");
-    });
-  },
+  // created() {
+  //   houseAnt.user.autoLogin().then(({success}) => {
+  //     if (success) this.$emit("login");
+  //   });
+  // },
   methods: {
     login() {
       if (!validateLogin(this.form.account, this.form.password)) {
@@ -28,6 +28,7 @@ export default {
 
       houseAnt.user.login(this.form.account, this.form.password).then(
           result => {
+            console.log(result);
             if (result.success) {
               console.log(">> login successfully");
               this.$emit("login");

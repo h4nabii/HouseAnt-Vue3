@@ -17,6 +17,7 @@ export default {
   created() {
     houseAnt.user.getBrowseData().then(
         result => {
+          console.log(result);
           this.houses = result.houses;
         }
     );

@@ -5,6 +5,7 @@ import vue from "@vitejs/plugin-vue";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+    base: "/houseant-front",
     plugins: [
         vue(),
     ],
@@ -14,7 +15,7 @@ export default defineConfig({
         }
     },
     server: {
-        port: 5173
+        port: 894
     },
     build: {
         rollupOptions: {
