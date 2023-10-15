@@ -4,8 +4,6 @@ export default function newAxios() {
     return {
         method: "get",
         credentials: false,
-        // ifDev: false,
-        ifDev: true, // remote unavailable
         entry: "/",
         data: null,
         params: {},
@@ -26,11 +24,6 @@ export default function newAxios() {
             this.method = "update";
             return this;
         },
-        /* remote server unavailable */
-        // isDev() {
-        //     this.ifDev = true;
-        //     return this;
-        // },
         withCredentials() {
             this.credentials = true;
             return this;
@@ -48,7 +41,10 @@ export default function newAxios() {
             return this;
         },
         send() {
-            let url = (this.ifDev ? "https://h4nabii.hyhyzz.top/house-ant" : "http://111.231.2.157:8080") + this.entry;
+            let url = (import.meta.env.PROD ?
+                    "https://h4nabii.hyhyzz.top/house-ant" :
+                    "http://localhost:8080"
+            ) + this.entry;
 
             if (Object.entries(this.params).length) {
                 url += "?" + [...Object.entries(this.params)]
@@ -60,13 +56,13 @@ export default function newAxios() {
 
             return axios({
                 headers: {
-                    "Content-Type": "application/json;charset=UTF-8"
+                    "Content-Type": "application/json;charset=UTF-8",
                 },
                 method: this.method,
                 url: url,
                 withCredentials: this.credentials,
-                data: this.data
+                data: this.data,
             });
-        }
+        },
     };
 }

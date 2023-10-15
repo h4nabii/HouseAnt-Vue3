@@ -1,33 +1,32 @@
 <script>
 import UserPanel from "@/components/UserPanel.vue";
 import BrowsePanel from "@/components/BrowsePanel.vue";
+import BasicLayout from "@/components/BasicLayout.vue";
+import GlobalHeader from "@/components/GlobalHeader.vue";
 
 export default {
   components: {
+    GlobalHeader,
+    BasicLayout,
     UserPanel,
-    BrowsePanel
+    BrowsePanel,
   },
   data() {
     return {
-      login: false
+      login: false,
     };
-  }
+  },
 
 };
 </script>
 
 <template>
-  <div class="container">
-    <header>HouseAnt</header>
-    <div class="content">
-      <UserPanel @login="login=true" @logout="login=false"/>
-      <BrowsePanel/>
-    </div>
-    <a :hidden="!login" href="/database/">
-      <button class="router border-panel">数据管理</button>
-    </a>
-    <footer>HouseAnt</footer>
-  </div>
+  <BasicLayout>
+    <template #header>
+      <GlobalHeader/>
+    </template>
+    <template #footer></template>
+  </BasicLayout>
 </template>
 
 <style scoped>
