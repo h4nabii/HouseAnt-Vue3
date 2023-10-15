@@ -5,13 +5,13 @@ export default {
     user: {
         async login(account, password) {
             let resp = await newAxios()
+                .setEntry("/user/login")
                 .isPost()
                 .withCredentials()
                 .setData({
                     username: account,
                     password: password
                 })
-                .setEntry("/user/login")
                 .send();
 
             console.log(resp.data);
