@@ -1,6 +1,6 @@
 <script>
 export default {
-  props: ["reservation"]
+  props: ["reservation"],
 };
 </script>
 

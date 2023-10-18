@@ -1,17 +1,19 @@
 <script>
-import {h} from "vue";
+import image from "@/assets/no-pic.jpg";
 
 export default {
-  methods: {h},
-  props: ["houseInfo"]
+  name: "HouseCard",
+  props: ["houseInfo"],
+  data: () => ({
+    image,
+  }),
 };
 </script>
 
 <template>
-  <div class="data-item">
-    <div class="picture" hidden>{{ houseInfo.picture }}</div>
-    <img src="@/assets/no-pic.jpg" alt="">
-    <div class="info">
+  <div class="card">
+    <img class="image" :src="image" alt="image">
+    <div class="data">
       <div class="name">{{ houseInfo.name }}</div>
       <div class="price" v-if="houseInfo.price">
         <span>价格：</span>
@@ -54,41 +56,27 @@ export default {
 </template>
 
 <style scoped>
-.data-item {
-  border: 1px solid grey;
-  border-radius: 10px;
-  box-shadow: inset grey 1px 1px;
-
-  margin-bottom: 20px;
-  padding: 20px;
-
-  display: flex;
-  flex-direction: row;
+.card {
+  width: 290px;
+  height: 320px;
+  box-sizing: border-box;
+  border: 1px solid lightgray;
+  border-radius: 20px;
+  box-shadow: grey 2px 2px 0 0;
+  overflow: hidden;
+  margin: 10px;
 }
 
-img {
-  height: 240px;
-  margin-right: 50px;
+.card .image {
+  width: 100%;
+  height: 60%;
+  object-fit: cover;
+  object-position: top;
 }
 
-.info {
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
+.card .data {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 20px;
 }
-
-.info div span {
-  display: inline-block;
-  width: 80px;
-}
-
-.info div {
-  height: 20px;
-}
-
-.info div.name {
-  font-size: 24px;
-  margin-bottom: 18px;
-}
-
 </style>

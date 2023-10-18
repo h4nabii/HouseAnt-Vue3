@@ -8,13 +8,13 @@ export default {
   components: {
     CustomerPanel,
     ModifyPanel,
-    OwnerPanel
+    OwnerPanel,
   },
   data() {
     return {
       state: null,
       username: "",
-      tel: ""
+      tel: "",
     };
   },
   computed: {
@@ -29,7 +29,7 @@ export default {
       default:
         return null;
       }
-    }
+    },
   },
   methods: {
 
@@ -53,26 +53,25 @@ export default {
     },
 
     getInfo() {
-      houseAnt.user.getInfo().then(({user, error, message}) => {
-            if (user) {
-              console.log(">> get user info successfully");
-              ({username: this.username, tel: this.tel} = user);
+      houseAnt.user.getInfo()
+        .then(({user, error, message}) => {
+          if (user) {
+            console.log(">> get user info successfully");
+            ({username: this.username, tel: this.tel} = user);
 
-            } else if (error) {
-              console.log(">> get user info failed: " + message);
+          } else if (error) {
+            console.log(">> get user info failed: " + message);
 
-            } else {
-              console.log(">> get user info failed: unknown error");
-
-            }
+          } else {
+            console.log(">> get user info failed: unknown error");
           }
-      );
-    }
+        });
+    },
   },
   emits: ["logout"],
   created() {
     this.getInfo();
-  }
+  },
 };
 </script>
 
@@ -85,9 +84,9 @@ export default {
     </div>
     <div class="button-bar">
       <button
-          @click="switchPanel('modify')"
-          class="panel-button"
-          :class="{active: state === 'modify'}">
+        @click="switchPanel('modify')"
+        class="panel-button"
+        :class="{active: state === 'modify'}">
         修改个人信息
       </button>
       <button @click="logout" class="panel-button">退出登录</button>

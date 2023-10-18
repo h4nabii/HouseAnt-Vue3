@@ -2,7 +2,7 @@
 import "@/assets/panel.css";
 
 export default {
-  props: ["house"]
+  props: ["house"],
 };
 </script>
 

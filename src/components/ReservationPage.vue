@@ -1,15 +1,14 @@
 <script>
 import ReservationList from "@/components/customer-panel/ReservationList.vue";
 import houseAnt from "@/assets/houseAnt";
-import "@/assets/panel.css";
+import PageLayout from "@/components/PageLayout.vue";
 
 export default {
-  components: {ReservationList},
-  data() {
-    return {
-      reservations: [],
-    };
-  },
+  name: "ReservationPage",
+  components: {PageLayout, ReservationList},
+  data: () => ({
+    reservations: [],
+  }),
   created() {
     houseAnt.customer.getMyReservations().then(result => {
       this.reservations = result.reservations;
@@ -19,12 +18,10 @@ export default {
 </script>
 
 <template>
-  <div class="source-panel border-panel">
-    <div class="title">我的预约</div>
+  <PageLayout title="我的预约">
     <ReservationList :reservations="reservations"/>
-  </div>
+  </PageLayout>
 </template>
 
 <style scoped>
-
 </style>

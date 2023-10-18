@@ -6,13 +6,13 @@ export default {
   emits: ["login", "logout"],
   data() {
     return {
-      login: false
+      login: false,
     };
   },
   components: {
     LoginPanel,
     InfoPanel,
-  }
+  },
 };
 </script>
 

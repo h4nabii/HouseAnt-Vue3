@@ -1,17 +1,15 @@
 <script>
-import SourceItem from "@/components/onwer-panel/SourceItem.vue";
-import houseAnt from "@/assets/houseAnt";
+import PageLayout from "@/components/PageLayout.vue";
 import SourceList from "@/components/onwer-panel/SourceList.vue";
+import houseAnt from "@/assets/houseAnt";
 
 export default {
+  name: "ManagePage",
+  components: {PageLayout, SourceList},
   data() {
     return {
       houses: [],
     };
-  },
-  components: {
-    SourceList,
-    SourceItem,
   },
   created() {
     houseAnt.houseOwner.getMyHouses().then(
@@ -24,12 +22,10 @@ export default {
 </script>
 
 <template>
-  <div class="owner-panel border-panel">
-    <div class="title">我的房源</div>
+  <PageLayout title="我的房源">
     <SourceList :houses="houses"/>
-  </div>
+  </PageLayout>
 </template>
 
 <style scoped>
-
 </style>

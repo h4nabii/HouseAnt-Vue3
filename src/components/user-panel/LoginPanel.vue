@@ -2,7 +2,6 @@
 import "@/assets/panel.css";
 import houseAnt from "@/assets/houseAnt";
 import validateLogin from "@/assets/validators/userPassValidator";
-import newAxios from "@/assets/axois/axoisGen";
 
 export default {
   emits: ["login"],
@@ -10,8 +9,8 @@ export default {
     return {
       form: {
         account: "",
-        password: ""
-      }
+        password: "",
+      },
     };
   },
   // created() {
@@ -27,35 +26,35 @@ export default {
       }
 
       houseAnt.user.login(this.form.account, this.form.password).then(
-          result => {
-            console.log(result);
-            if (result.success) {
-              console.log(">> login successfully");
-              this.$emit("login");
+        result => {
+          console.log(result);
+          if (result.success) {
+            console.log(">> login successfully");
+            this.$emit("login");
 
-            } else if (result.newUser) {
-              console.log(">> failed: account not found, now trying to register a new account");
-              this.register(this.form.account, this.form.password);
+          } else if (result.newUser) {
+            console.log(">> failed: account not found, now trying to register a new account");
+            this.register(this.form.account, this.form.password);
 
-            } else if (result.error) {
-              console.log(">> error: " + result.message);
+          } else if (result.error) {
+            console.log(">> error: " + result.message);
 
-            } else {
-              console.log(">> error: unknown reason");
-            }
+          } else {
+            console.log(">> error: unknown reason");
           }
+        },
       );
     },
 
     register(user, pass) {
       houseAnt.user.register(user, pass).then(
-          result => {
-            this.msg = result.message;
-            if (result.success) {
-              console.log(">> Register successfully, now trying to login");
-              this.login(this.form.account, this.form.password);
-            }
+        result => {
+          this.msg = result.message;
+          if (result.success) {
+            console.log(">> Register successfully, now trying to login");
+            this.login(this.form.account, this.form.password);
           }
+        },
       );
     },
 
@@ -66,8 +65,8 @@ export default {
 
     clean_msg() {
       this.msg = "";
-    }
-  }
+    },
+  },
 };
 </script>
 

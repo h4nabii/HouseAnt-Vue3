@@ -1,35 +1,36 @@
-import About from "@/components/About.vue";
-import Home from "@/components/Home.vue";
-import CustomerPanel from "@/components/user-panel/CustomerPanel.vue";
-import OwnerPanel from "@/components/user-panel/OwnerPanel.vue";
+import AboutPage from "@/components/AboutPage.vue";
+import HomePage from "@/components/HomePage.vue";
+import ReservationPage from "@/components/ReservationPage.vue";
+import ManagePage from "@/components/ManagePage.vue";
+import PublishPage from "@/components/PublishPage.vue";
 
 export default [
-    {
-        path: "/",
-        component: Home,
-        name: "主页",
-    },
-    {
-        path: "/reservation",
-        component: CustomerPanel,
-        name: "查看预约",
-        access: "user",
-    },
-    {
-        path: "/houses-publish",
-        component: OwnerPanel,
-        name: "发布房屋",
-        access: "user",
-    },
-    {
-        path: "/houses-manage",
-        component: Home,
-        name: "管理房屋",
-        access: "user",
-    },
-    {
-        path: "/about",
-        component: About,
-        name: "关于",
-    },
+  {
+    path: "/",
+    component: HomePage,
+    name: "主页",
+  },
+  {
+    path: "/reservation",
+    component: ReservationPage,
+    name: "查看预约",
+    access: "user",
+  },
+  {
+    path: "/houses-publish",
+    component: PublishPage,
+    name: "发布房屋",
+    access: "user",
+  },
+  {
+    path: "/houses-manage",
+    component: ManagePage,
+    name: "管理房屋",
+    access: "user",
+  },
+  {
+    path: "/about",
+    component: AboutPage,
+    name: "关于",
+  },
 ];

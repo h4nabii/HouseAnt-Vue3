@@ -4,8 +4,8 @@ import SourceItem from "@/components/onwer-panel/SourceItem.vue";
 export default {
   props: ["houses"],
   components: {
-    SourceItem
-  }
+    SourceItem,
+  },
 };
 </script>
 

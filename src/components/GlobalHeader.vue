@@ -48,24 +48,25 @@ export default {
 
 <template>
   <el-menu
-      class="menu"
-      mode="horizontal"
-      :default-active="activeIndex"
-      :router="true"
-      :unique-opened="true"
-      :ellipsis="false"
-      background-color="#1f2233"
-      text-color="#6cf"
-      active-text-color="#77f"
+    class="menu"
+    mode="horizontal"
+    :default-active="activeIndex"
+    :router="true"
+    :unique-opened="true"
+    :ellipsis="false"
+    background-color="#1f2233"
+    text-color="#6cf"
+    active-text-color="#77f"
   >
     <div class="logo">
       <img class="logo-image" :src="logoImg" alt="logo"/>
     </div>
     <el-divider class="divider" direction="vertical"/>
     <el-menu-item
-        class="menu-item"
-        v-for="item in availableRoutes"
-        :index="item.path">
+      class="menu-item"
+      v-for="item in availableRoutes"
+      :index="item.path"
+      :key="item.path">
       {{ item.name }}
     </el-menu-item>
     <div style="flex-grow: 1"/>

@@ -4,8 +4,8 @@ import ReservationItem from "@/components/customer-panel/ReservationItem.vue";
 export default {
   props: ["reservations"],
   components: {
-    ReservationItem
-  }
+    ReservationItem,
+  },
 };
 </script>
 

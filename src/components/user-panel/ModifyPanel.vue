@@ -7,7 +7,7 @@ export default {
   emits: ["update", "changePass"],
   props: [
     "username",
-    "tel"
+    "tel",
   ],
   data() {
     return {
@@ -16,15 +16,15 @@ export default {
         username: "",
         password: "",
         confirm: "",
-        tel: ""
+        tel: "",
       },
       msg: {
         avatar: "",
         username: "",
         password: "",
         confirm: "",
-        tel: ""
-      }
+        tel: "",
+      },
     };
   },
   methods: {
@@ -67,11 +67,11 @@ export default {
     },
     clearMsg(msgName) {
       this.msg[msgName] = "";
-    }
+    },
   },
   created() {
     this.reset();
-  }
+  },
 };
 
 </script>
