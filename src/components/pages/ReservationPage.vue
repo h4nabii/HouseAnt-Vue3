@@ -1,7 +1,7 @@
 <script>
 import ReservationList from "@/components/customer-panel/ReservationList.vue";
 import houseAnt from "@/assets/houseAnt";
-import PageLayout from "@/components/PageLayout.vue";
+import PageLayout from "@/components/layouts/PageLayout.vue";
 
 export default {
   name: "ReservationPage",

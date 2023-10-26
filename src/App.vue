@@ -1,7 +1,7 @@
 <script>
-import BasicLayout from "@/components/BasicLayout.vue";
-import GlobalHeader from "@/components/GlobalHeader.vue";
-import GlobalFooter from "@/components/GlobalFooter.vue";
+import BasicLayout from "@/components/layouts/BasicLayout.vue";
+import GlobalHeader from "@/components/layouts/GlobalHeader.vue";
+import GlobalFooter from "@/components/layouts/GlobalFooter.vue";
 
 export default {
   components: {

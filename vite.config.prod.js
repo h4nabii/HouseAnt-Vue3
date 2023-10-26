@@ -4,17 +4,17 @@ import vue from "@vitejs/plugin-vue";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    base: "/HouseAnt-Vue3",
-    plugins: [
-        vue(),
-    ],
-    resolve: {
-        alias: {
-            "@": fileURLToPath(new URL("./src", import.meta.url)),
-        },
+  base: "/HouseAnt-Vue3",
+  plugins: [
+    vue(),
+  ],
+  resolve: {
+    alias: {
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
-    server: {
-        base: "/",
-        port: 894,
-    },
+  },
+  server: {
+    base: "/",
+    port: 894,
+  },
 });

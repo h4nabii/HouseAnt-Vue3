@@ -7,7 +7,7 @@ import houseAnt from "@/assets/houseAnt";
 export default {
   name: "GlobalHeader",
   data: () => ({
-    activeIndex: location.hash.substring(1),
+    activeIndex: "",
     logoImg,
     access: ["notLogged"],
     userInfo: {
@@ -17,13 +17,20 @@ export default {
   }),
   created() {
     this.login();
+    this.activeIndex = this.$route["path"];
+  },
+  watch: {
+    "$route.path"() {
+      this.activeIndex = this.$route["path"];
+    },
   },
   computed: {
     availableRoutes() {
+      let routeTemps = [...routes].filter(item => !item.meta?.hide);
       if (this.access === "user") {
-        return routes;
+        return routeTemps;
       } else {
-        return routes.filter(item => item.access !== "user");
+        return routeTemps.filter(item => item.access !== "user");
       }
     },
   },

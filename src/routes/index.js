@@ -1,8 +1,8 @@
-import AboutPage from "@/components/AboutPage.vue";
-import HomePage from "@/components/HomePage.vue";
-import ReservationPage from "@/components/ReservationPage.vue";
-import ManagePage from "@/components/ManagePage.vue";
-import PublishPage from "@/components/PublishPage.vue";
+import AboutPage from "@/components/pages/AboutPage.vue";
+import HomePage from "@/components/pages/HomePage.vue";
+import ReservationPage from "@/components/pages/ReservationPage.vue";
+import ManagePage from "@/components/pages/ManagePage.vue";
+import PublishPage from "@/components/pages/PublishPage.vue";
 
 export default [
   {
@@ -32,5 +32,12 @@ export default [
     path: "/about",
     component: AboutPage,
     name: "关于",
+  },
+  {
+    path: "/test",
+    component: HomePage,
+    meta: {
+      hide: true,
+    },
   },
 ];

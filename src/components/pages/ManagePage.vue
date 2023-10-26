@@ -1,5 +1,5 @@
 <script>
-import PageLayout from "@/components/PageLayout.vue";
+import PageLayout from "@/components/layouts/PageLayout.vue";
 import SourceList from "@/components/onwer-panel/SourceList.vue";
 import houseAnt from "@/assets/houseAnt";
 
