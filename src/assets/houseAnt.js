@@ -133,12 +133,13 @@ export default {
       }
     },
 
-    async getBrowseData() {
+    async getBrowseData(count = 20, page = 1) {
       let resp = await newAxios()
-        .setEntry("/user/get-explore-list?count=20&page=1")
+        .setEntry(`/user/get-explore-list?count=${count}&page=${page}`)
         .send();
 
       return {
+        /** @type Array */
         houses: resp.data["houseList"],
       };
     },
