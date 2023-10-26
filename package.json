@@ -17,6 +17,8 @@
     "@vitejs/plugin-vue": "^4.2.3",
     "eslint": "^8.43.0",
     "eslint-plugin-vue": "^9.15.1",
+    "unplugin-auto-import": "^0.16.7",
+    "unplugin-vue-components": "^0.25.2",
     "vite": "^4.3.9"
   }
 }
