@@ -11,7 +11,7 @@ export default {
     logoImg,
     access: ["notLogged"],
     userInfo: {
-      username: "未登录",
+      username: "点击登录",
       avatar: defaultAvatar,
     },
   }),
@@ -20,6 +20,7 @@ export default {
     userInfo.$subscribe((mutation, state) => {
       this.userInfo.username = state.username;
       this.userInfo.avatar = state.avatar;
+      this.access = state.access;
     });
 
     // this.getInfo();
