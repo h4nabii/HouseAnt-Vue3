@@ -9,22 +9,24 @@ export default {
   name: "HomePage",
   components: {PageLayout, HouseCard},
   data: () => ({
-    page: 0,
+    page: 1,
     houses: [],
+    completed: false,
   }),
   methods: {
     async appendData() {
-      if (loading) return;
-      this.page++;
+      if (loading || this.completed) return;
       loading = true;
       let {houses} = await houseAnt.user.getBrowseData(18, this.page);
 
       /* 模拟网络延时，测试 loading 锁 */
       // await new Promise(r => setTimeout(r, 500));
 
-      if (houses) {
+      if (houses.length > 0) {
         this.houses.push(...houses);
+        this.page++;
       }
+      if (houses.length < 18) this.completed = true;
       loading = false;
     },
   },
