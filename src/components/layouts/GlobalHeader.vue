@@ -2,7 +2,7 @@
 import routes from "@/routes";
 import logoImg from "@/assets/logo.png";
 import defaultAvatar from "@/assets/no-pic.jpg";
-import houseAnt from "@/assets/houseAnt";
+import {useUserStore} from "@/stores/user";
 
 export default {
   name: "GlobalHeader",
@@ -16,7 +16,14 @@ export default {
     },
   }),
   created() {
-    this.login();
+    const userInfo = useUserStore();
+    userInfo.$subscribe((mutation, state) => {
+      this.userInfo.username = state.username;
+      this.userInfo.avatar = state.avatar;
+    });
+
+    // this.getInfo();
+
     this.activeIndex = this.$route["path"];
   },
   watch: {
@@ -36,18 +43,10 @@ export default {
   },
   methods: {
     async login() {
-      const {success, account} = await houseAnt.user.login("456", "456");
-      await this.getInfo();
-      if (success) {
-        this.access = "user";
-      }
+      this.$router.push("/login");
     },
     async getInfo() {
-      const {user, message, error} = await houseAnt.user.getInfo();
-      if (!error) {
-        this.userInfo.username = user.username;
-        this.access = user.tel;
-      }
+
     },
   },
 };

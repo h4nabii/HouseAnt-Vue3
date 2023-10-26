@@ -3,6 +3,7 @@ import HomePage from "@/components/pages/HomePage.vue";
 import ReservationPage from "@/components/pages/ReservationPage.vue";
 import ManagePage from "@/components/pages/ManagePage.vue";
 import PublishPage from "@/components/pages/PublishPage.vue";
+import LoginPage from "@/components/pages/LoginPage.vue";
 
 export default [
   {
@@ -34,8 +35,8 @@ export default [
     name: "关于",
   },
   {
-    path: "/test",
-    component: HomePage,
+    path: "/login",
+    component: LoginPage,
     meta: {
       hide: true,
     },

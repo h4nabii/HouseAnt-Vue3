@@ -3,14 +3,14 @@ import newAxios from "@/assets/axois/axoisGen";
 
 export default {
   user: {
-    async login(account, password) {
+    async login(username, password) {
       let resp = await newAxios()
         .setEntry("/user/login")
         .isPost()
         .withCredentials()
         .setData({
-          username: account,
-          password: password,
+          username,
+          password,
         })
         .send();
 
@@ -19,7 +19,7 @@ export default {
       if (resp.data["success"]) {
         return {
           success: true,
-          account: account,
+          username: username,
         };
       } else if (resp.data.error === "User does not exist") {
         return {
@@ -95,7 +95,7 @@ export default {
         return {
           user: {
             username: resp.data.username,
-            tel: resp.data.access,
+            access: resp.data.access,
           },
         };
       } else {

@@ -13,7 +13,9 @@ export default {
     </el-header>
     <el-main class="main">
       <el-container class="center">
-        <router-view/>
+        <slot>
+          <router-view/>
+        </slot>
       </el-container>
     </el-main>
     <el-footer class="footer">
