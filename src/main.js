@@ -1,7 +1,6 @@
 import "@/assets/normalize.css";
 
 import {createApp} from "vue";
-import ElementPlus from "element-plus";
 import {createPinia} from "pinia";
 import {createRouter, createWebHashHistory} from "vue-router";
 import "element-plus/dist/index.css";
@@ -17,7 +16,6 @@ const router = createRouter({
 const pinia = createPinia();
 
 createApp(App)
-  .use(ElementPlus)
   .use(pinia)
   .use(router)
   .mount("#app");
